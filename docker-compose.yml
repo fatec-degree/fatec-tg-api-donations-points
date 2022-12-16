@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:5.6
+    container_name: mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=db_donations
+      - MYSQL_USER=app
+      - MYSQL_PASSWORD=app
+    ports:
+      - 3307:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+  
+  app:
+    image: pedro6571/fatec-tg-api-donations-points:latest
+    container_name: app
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+    ports:
+      - 8080:8080
