@@ -32,12 +32,7 @@ jobs:
     uses: ./.github/workflows/docker.yml
     secrets: inherit
 
-  upload_s3:
-    needs: build
-    uses: ./.github/workflows/upload_s3.yml
-    secrets: inherit
-  
   deploy_beanstalk:
-    needs: upload_s3
+    needs: build
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
