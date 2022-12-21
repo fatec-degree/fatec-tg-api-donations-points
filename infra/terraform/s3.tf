@@ -8,7 +8,7 @@ resource "aws_s3_bucket" "api_donations_s3" {
 
 resource "aws_s3_object" "api_donations_jar" {
   bucket = aws_s3_bucket.api_donations_s3.id
-  key    = "beanstalk/donations-0.0.1-SNAPSHOT.jar"
+  key    = "api-donations/donations-0.0.1-SNAPSHOT.jar"
   source = "../../target/donations-0.0.1-SNAPSHOT.jar"
 }
 
