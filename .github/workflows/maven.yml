@@ -36,3 +36,8 @@ jobs:
     needs: build
     uses: ./.github/workflows/upload_s3.yml
     secrets: inherit
+  
+  deploy_beanstalk:
+    needs: upload_s3
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
