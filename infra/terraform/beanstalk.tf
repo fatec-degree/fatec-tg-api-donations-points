@@ -33,4 +33,22 @@ resource "aws_elastic_beanstalk_environment" "api_donations_prd" {
     name      = "EnvironmentType"
     value     = "SingleInstance"
   }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name = "DATABASE_URL"
+    value = "jdbc:mysql://db-donations.c0zuandkhbws.us-east-1.rds.amazonaws.com:3306/db_donations"
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name = "DATABASE_USER"
+    value = "admin"
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name = "DATABASE_PASSWORD"
+    value = "app_donations"
+  }
 }
