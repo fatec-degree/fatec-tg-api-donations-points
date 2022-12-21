@@ -28,7 +28,7 @@ jobs:
           environment_name: api-donations-prod
           # Version label for new Beanstalk version
           version_label: api-donations-1.0
-          deployment_package: './target/app.zip'
+          deployment_package: app.zip
           # Whether the action should skip creating a new bucket and use the given one to upload the deployment package to instead. When omitted the actions will (try to) create a new one during deployment.
           existing_bucket_name: api-donations-s3
           # Whether the action should wait for the deployment to finish and log status messages during the wait. Default is "true". If set to "false" the action will start the deployment on Beanstalk and then exit.
