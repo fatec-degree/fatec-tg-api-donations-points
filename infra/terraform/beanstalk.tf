@@ -1,5 +1,5 @@
 resource "aws_elastic_beanstalk_application" "api_donations_beanstalk" {
-  name        = "api-donations-tf"
+  name        = "api-donations"
   description = "API for FATEC's TG"
 }
 
@@ -23,8 +23,14 @@ resource "aws_elastic_beanstalk_environment" "api_donations_prd" {
   }
 
   setting {
-   namespace = "aws:autoscaling:launchconfiguration"
-   name = "IamInstanceProfile"
-   value = "aws-elasticbeanstalk-ec2-role"
+    namespace = "aws:autoscaling:launchconfiguration"
+    name      = "IamInstanceProfile"
+    value     = "aws-elasticbeanstalk-ec2-role"
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:environment"
+    name      = "EnvironmentType"
+    value     = "SingleInstance"
   }
 }
