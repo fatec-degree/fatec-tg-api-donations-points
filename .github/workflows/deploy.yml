@@ -18,8 +18,8 @@ jobs:
           aws_access_key: ${{ secrets.AWS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           region: us-east-1
-          application_name: api-donations
-          environment_name: Apidonations-env
+          application_name: api-donations-tf
+          environment_name: api-donations-prd
           version_label: api-donations-${{ github.sha }}
           deployment_package: ./target/donations-0.0.1-SNAPSHOT.jar
           existing_bucket_name: api-donations-s3
