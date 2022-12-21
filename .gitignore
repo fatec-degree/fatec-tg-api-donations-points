@@ -176,6 +176,10 @@ buildNumber.properties
 # Edit at https://www.toptal.com/developers/gitignore?templates=terraform
 
 ### Terraform ###
+# Created by https://www.toptal.com/developers/gitignore/api/terraform
+# Edit at https://www.toptal.com/developers/gitignore?templates=terraform
+
+### Terraform ###
 # Local .terraform directories
 **/.terraform/*
 
@@ -210,6 +214,7 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+*.lock.hcl
 
 # End of https://www.toptal.com/developers/gitignore/api/terraform
 # End of https://www.toptal.com/developers/gitignore/api/java,maven,intellij+all
