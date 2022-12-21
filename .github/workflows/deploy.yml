@@ -6,24 +6,30 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    # You may pin to the exact commit or the version.
-    # uses: einaregilsson/beanstalk-deploy@18e5b85bd914cabf00fccabe72f60b8757dcd3cb
-    - name: Beanstalk Deploy
-      uses: einaregilsson/beanstalk-deploy@v21
-      with:
-        # AWS Access Key
-        aws_access_key: ${{ secrets.AWS_KEY_ID }}
-        # AWS Secret Key
-        aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-        # AWS Region
-        region: us-east-1
-        # Beanstalk application name
-        application_name: api-donations
-        # Beanstalk environment name. If empty a version will be created but not deployed anywhere.
-        environment_name: api-donations-prod
-        # Version label for new Beanstalk version
-        version_label: api-donations-1.0
-        # Whether the action should skip creating a new bucket and use the given one to upload the deployment package to instead. When omitted the actions will (try to) create a new one during deployment.
-        existing_bucket_name: api-donations-s3
-        # Whether the action should wait for the deployment to finish and log status messages during the wait. Default is "true". If set to "false" the action will start the deployment on Beanstalk and then exit.
-        wait_for_deployment: true
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.1
+        with:
+          name: app
+          path: ./target
+      # You may pin to the exact commit or the version.
+      # uses: einaregilsson/beanstalk-deploy@18e5b85bd914cabf00fccabe72f60b8757dcd3cb
+      - name: Beanstalk Deploy
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+          # AWS Access Key
+          aws_access_key: ${{ secrets.AWS_KEY_ID }}
+          # AWS Secret Key
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+          # AWS Region
+          region: us-east-1
+          # Beanstalk application name
+          application_name: api-donations
+          # Beanstalk environment name. If empty a version will be created but not deployed anywhere.
+          environment_name: api-donations-prod
+          # Version label for new Beanstalk version
+          version_label: api-donations-1.0
+          deployment_package: './target/app.zip'
+          # Whether the action should skip creating a new bucket and use the given one to upload the deployment package to instead. When omitted the actions will (try to) create a new one during deployment.
+          existing_bucket_name: api-donations-s3
+          # Whether the action should wait for the deployment to finish and log status messages during the wait. Default is "true". If set to "false" the action will start the deployment on Beanstalk and then exit.
+          wait_for_deployment: true
