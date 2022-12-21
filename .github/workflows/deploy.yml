@@ -12,7 +12,7 @@ jobs:
       uses: einaregilsson/beanstalk-deploy@v21
       with:
         # AWS Access Key
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+        aws_access_key: ${{ secrets.AWS_KEY_ID }}
         # AWS Secret Key
         aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
         # AWS Region
@@ -23,8 +23,6 @@ jobs:
         environment_name: api-donations-prod
         # Version label for new Beanstalk version
         version_label: api-donations-1.0
-        # Zip file with the version to deploy. If skipped the action will deploy existing version.
-        deployment_package: # optional
         # Whether the action should skip creating a new bucket and use the given one to upload the deployment package to instead. When omitted the actions will (try to) create a new one during deployment.
         existing_bucket_name: api-donations-s3
         # Whether the action should wait for the deployment to finish and log status messages during the wait. Default is "true". If set to "false" the action will start the deployment on Beanstalk and then exit.
