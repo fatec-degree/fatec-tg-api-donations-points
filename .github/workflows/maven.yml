@@ -32,7 +32,7 @@ jobs:
     uses: ./.github/workflows/docker.yml
     secrets: inherit
 
-  deploy_beanstalk:
+  deploy:
     needs: docker
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
