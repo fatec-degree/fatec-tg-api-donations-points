@@ -4,11 +4,11 @@ on: workflow_call
 
 jobs:
   terraform:
-    env:
-      working-directory: ./infra/terraform
-    defaults:
-      run:
-        working-directory: ${{ env.working-directory }}
+    # env:
+    #   working-directory: ./infra/terraform
+    # defaults:
+    #   run:
+    #     working-directory: ${{ env.working-directory }}
     runs-on: ubuntu-latest
     steps:
     - name: Terraform Setup
