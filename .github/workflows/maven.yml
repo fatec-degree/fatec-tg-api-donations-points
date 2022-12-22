@@ -27,12 +27,16 @@ jobs:
         name: app
         path: ./target/donations-0.0.1-SNAPSHOT.jar
 
-  docker:
-    needs: build
-    uses: ./.github/workflows/docker.yml
-    secrets: inherit
+  # docker:
+  #   needs: build
+  #   uses: ./.github/workflows/docker.yml
+  #   secrets: inherit
 
-  deploy:
-    needs: docker
-    uses: ./.github/workflows/deploy.yml
-    secrets: inherit
+  # deploy:
+  #   needs: docker
+  #   uses: ./.github/workflows/deploy.yml
+  #   secrets: inherit
+    terraform:
+      needs: build
+      uses: ./.github/workflows/terraform.yml
+      secrets: inherit
