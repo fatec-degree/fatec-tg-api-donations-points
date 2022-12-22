@@ -15,6 +15,9 @@ resource "aws_elastic_beanstalk_environment" "api_donations_prd" {
   application         = aws_elastic_beanstalk_application.api_donations_beanstalk.name
   version_label       = aws_elastic_beanstalk_application_version.api_donations_version.name
   solution_stack_name = "64bit Amazon Linux 2 v3.4.2 running Corretto 17"
+  depends_on = [
+    aws_db_instance.api_donations_rds
+  ]
 
   setting {
     namespace = "aws:ec2:instances"
@@ -37,7 +40,7 @@ resource "aws_elastic_beanstalk_environment" "api_donations_prd" {
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "DATABASE_URL"
-    value     = var.DATABASE_URL
+    value     = "jdbc:mysql://${aws_db_instance.api_donations_rds.endpoint}/${aws_db_instance.api_donations_rds.db_name}"
   }
 
   setting {
