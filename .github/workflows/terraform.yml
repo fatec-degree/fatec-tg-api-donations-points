@@ -4,11 +4,9 @@ on: workflow_call
 
 jobs:
   terraform:
-    # env:
-    #   working-directory: ./infra/terraform
-    # defaults:
-    #   run:
-    #     working-directory: ${{ env.working-directory }}
+    defaults:
+      run:
+        working-directory: ./infra/terraform
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -22,4 +20,4 @@ jobs:
     
     - name: Terraform Format
       id: fmt
-      run: ls -la
+      run: terraform fmt -check
