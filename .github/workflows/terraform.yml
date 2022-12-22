@@ -18,5 +18,6 @@ jobs:
         terraform_wrapper: false        
     
     - name: Terraform Format
+      uses: actions/checkout@v3
       id: fmt
       run: ls -la
