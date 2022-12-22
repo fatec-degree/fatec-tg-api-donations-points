@@ -36,7 +36,7 @@ jobs:
   #   needs: docker
   #   uses: ./.github/workflows/deploy.yml
   #   secrets: inherit
-    terraform:
-      needs: build
-      uses: ./.github/workflows/terraform.yml
-      secrets: inherit
+  terraform:
+    needs: build
+    uses: ./.github/workflows/terraform.yml
+    secrets: inherit

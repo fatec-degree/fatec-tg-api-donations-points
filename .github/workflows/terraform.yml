@@ -4,16 +4,17 @@ on: workflow_call
 
 jobs:
   terraform:
+    defaults:
+      run:
+        working-directory: ./infra/terraform/
     runs-on: ubuntu-latest
     steps:
     - name: Terraform Setup
       uses: hashicorp/setup-terraform@v2
-      working-directory: ./infra/terraform/
       with:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
         terraform_wrapper: false        
     
     - name: Terraform Format
       id: fmt
-      working-directory: ./infra/terraform/
       run: terraform fmt -check
