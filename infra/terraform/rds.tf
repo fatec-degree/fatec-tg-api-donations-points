@@ -6,7 +6,7 @@ resource "aws_db_instance" "api_donations_rds" {
   instance_class              = "db.t2.micro"
   username                    = var.DATABASE_USER
   password                    = var.DATABASE_PASSWORD
-  parameter_group_name        = "default.mysql5.7"
+  parameter_group_name        = "default.mysql8.0"
   skip_final_snapshot         = true
   allocated_storage           = 20
   max_allocated_storage       = 0
