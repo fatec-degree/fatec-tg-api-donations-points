@@ -1,5 +1,8 @@
 resource "aws_s3_bucket" "api_donations_s3" {
   bucket = "api-donations-s3"
+  depends_on = [
+    aws_db_instance.api_donations_rds
+  ]
 
   tags = {
     Name = "API Donations S3"

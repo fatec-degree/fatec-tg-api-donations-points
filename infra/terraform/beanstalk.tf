@@ -1,6 +1,9 @@
 resource "aws_elastic_beanstalk_application" "api_donations_beanstalk" {
   name        = "api-donations"
   description = "API for FATEC's TG"
+  depends_on = [
+    aws_s3_bucket.api_donations_s3
+  ]
 }
 
 resource "aws_elastic_beanstalk_environment" "api_donations_prd" {
@@ -8,7 +11,7 @@ resource "aws_elastic_beanstalk_environment" "api_donations_prd" {
   application         = aws_elastic_beanstalk_application.api_donations_beanstalk.name
   solution_stack_name = "64bit Amazon Linux 2 v3.4.2 running Corretto 17"
   depends_on = [
-    aws_db_instance.api_donations_rds
+    aws_elastic_beanstalk_application.api_donations_beanstalk
   ]
 
   setting {
