@@ -2,7 +2,7 @@ resource "aws_db_instance" "api_donations_rds" {
   identifier                 = "db-donations"
   db_name                    = "db_donations"
   engine                     = "mysql"
-  engine_version             = "5.7"
+  engine_version             = "8.0.31"
   instance_class             = "db.t2.micro"
   username                   = var.DATABASE_USER
   password                   = var.DATABASE_PASSWORD
