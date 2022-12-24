@@ -15,6 +15,18 @@ resource "aws_elastic_beanstalk_environment" "api_donations_prd" {
   ]
 
   setting {
+    namespace = "aws:ec2:vpc"
+    name      = "VPCId"
+    value     = aws_vpc.api_donations_vpc.id
+  }
+
+  setting {
+    namespace = "aws:ec2:vpc"
+    name      = "Subnets"
+    value     = aws_subnet.api_donations_subnet.id
+  }
+
+  setting {
     namespace = "aws:ec2:instances"
     name      = "InstanceTypes"
     value     = "t2.micro"
@@ -24,6 +36,18 @@ resource "aws_elastic_beanstalk_environment" "api_donations_prd" {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "IamInstanceProfile"
     value     = "aws-elasticbeanstalk-ec2-role"
+  }
+
+  setting {
+    namespace = "aws:autoscaling:launchconfiguration"
+    name      = "SecurityGroups"
+    value     = aws_security_group.api_donations_sg.id
+  }
+
+  setting {
+    namespace = "aws:autoscaling:launchconfiguration"
+    name      = "SecurityGroups"
+    value     = aws_security_group.api_donations_db_sg.id
   }
 
   setting {
