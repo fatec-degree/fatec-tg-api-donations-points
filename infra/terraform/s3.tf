@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "api_donations_s3" {
   depends_on = [
     aws_db_instance.api_donations_rds
   ]
-
+  force_destroy = true
   tags = {
     Name = "API Donations S3"
   }
