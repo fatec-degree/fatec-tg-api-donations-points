@@ -23,6 +23,6 @@ public class DonationPoint {
     private Double lng;
     private Double lat;
     @Column(name = "creation_date")
-    private LocalDateTime creationDate;
+    private LocalDateTime creationDate = LocalDateTime.now();
 
 }
