@@ -73,4 +73,10 @@ resource "aws_elastic_beanstalk_environment" "api_donations_prd" {
     name      = "DATABASE_PASSWORD"
     value     = var.DATABASE_PASSWORD
   }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "spring.profiles.active"
+    value     = var.ENVIRONMENT
+  }
 }
