@@ -14,6 +14,6 @@ variable "DATABASE_PASSWORD" {
 }
 
 variable "ENVIRONMENT" {
-  type      = string
+  type    = string
   default = "prd"
 }
