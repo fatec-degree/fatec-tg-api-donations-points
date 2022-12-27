@@ -5,6 +5,8 @@ import fatec.tg.donations.models.DonationPoint;
 import fatec.tg.donations.services.DonationPointService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -23,12 +25,14 @@ public class DonationPointController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @CacheEvict(value = "findAll", allEntries = true)
     public DonationPoint save(@RequestBody DonationPointRequestDto donationPointRequestDto){
         return donationPointService.save(modelMapper.map(donationPointRequestDto, DonationPoint.class));
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @Cacheable(value = "findAll")
     public Page<DonationPoint> findAll(@PageableDefault(
             size = 20,
             sort = {"state", "city", "district", "street", "number"},
