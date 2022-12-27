@@ -17,3 +17,8 @@ variable "ENVIRONMENT" {
   type    = string
   default = "prd"
 }
+
+variable "PORT" {
+  type    = string
+  default = 5000
+}

@@ -76,7 +76,13 @@ resource "aws_elastic_beanstalk_environment" "api_donations_prd" {
 
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
-    name      = "spring.profiles.active"
+    name      = "SPRING_PROFILES_ACTIVE"
     value     = var.ENVIRONMENT
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "PORT"
+    value     = var.PORT
   }
 }
