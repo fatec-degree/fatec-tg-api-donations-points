@@ -51,12 +51,12 @@ A aplicação estará em execução na porta 8080:
 
 5. Para buscar dados da API utilize o seguinte endpoint:
 
-```
+```bash
 curl --location --request GET 'localhost:8080/api/donations-points'
 ```
 
 6. Para salvar dados utilize o seguinte endpoint:
-```
+```bash
 curl --location --request POST 'localhost:8080/api/donations-points' \
      --header 'Content-Type: application/json' \
      --data-raw '{
