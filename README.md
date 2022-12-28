@@ -18,6 +18,12 @@ ______
     - Entrega do software em ambiente produtivo de forma automática. 
 
 ______
+## Pré-requisitos para executar o projeto
+
+* Docker version 20.10.22
+* Docker Compose v2.6.0
+
+______
 ## Como executar o projeto
 
 1. Clone este repositório:
@@ -30,7 +36,11 @@ git clone https://github.com/PedroHPAlmeida/fatec-tg-api-donations-points.git
 ```
 cd deploy/docker
 ```
+<div align="center">
+
 ![docker compose files](img/docker-compose.png)
+
+</div>
 
 3. Nesta pasta há dois arquivos: ```docker-compose-dev.yml``` e ```docker-compose-prd.yml```. O objetivo do arquivo ```-dev``` é simular o ambiente de desenvolvimento, contendo um banco de dados H2 (em memória). De forma semelhante o arquivo ```-prd``` simula o ambiente de produção, contendo um banco de dados MySQL. Para executar a aplicação, execute os seguintes comandos:
 
@@ -71,5 +81,6 @@ curl --location --request POST 'localhost:8080/api/donations-points' \
 ```
 
 6. O Swagger da aplicação se encontra no endereço: http://localhost:8080/swagger-ui/index.html
+
 ![Swagger](img/swagger.png)
 ______
