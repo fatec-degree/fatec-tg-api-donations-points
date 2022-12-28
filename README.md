@@ -18,6 +18,12 @@ ______
     - Entrega do software em ambiente produtivo de forma automática. 
 
 ______
+## Pré-requisitos para executar o projeto
+
+* Docker version 20.10.22
+* Docker Compose v2.6.0
+
+______
 ## Como executar o projeto
 
 1. Clone este repositório:
