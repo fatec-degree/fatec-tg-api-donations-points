@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fatec.tg.donations.controllers.dto.response.HealthDto;
 
 @RestController
-@RequestMapping
+@RequestMapping(path = "/health")
 public class HealthController {
     
     @GetMapping
